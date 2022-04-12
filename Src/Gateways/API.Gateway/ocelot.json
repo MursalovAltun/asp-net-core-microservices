@@ -1,0 +1,19 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "todos",
+      "UpstreamPathTemplate": "/api/todos/{everything}",
+      "UpstreamHttpMethod": ["Get"]
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

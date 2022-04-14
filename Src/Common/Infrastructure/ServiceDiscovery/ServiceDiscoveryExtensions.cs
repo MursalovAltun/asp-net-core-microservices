@@ -16,8 +16,8 @@ namespace Infrastructure.ServiceDiscovery
             var consulClient = CreateConsulClient(serviceConfig);
 
             services.AddSingleton(serviceConfig);
-            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
             services.AddSingleton<IConsulClient, ConsulClient>(p => consulClient);
+            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
         }
 
         private static ConsulClient CreateConsulClient(ServiceConfig serviceConfig)

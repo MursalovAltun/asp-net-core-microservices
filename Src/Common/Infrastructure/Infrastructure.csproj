@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Consul" Version="1.6.10.4" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

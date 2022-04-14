@@ -1,17 +1,30 @@
 ﻿{
   "$schema": "http://json-schema.org/draft-07/schema",
-  "ReRoutes": [
+  "Routes": [
     {
-      "DownstreamPathTemplate": "/api/{everything}",
-      "DownstreamScheme": "http",
       "ServiceName": "todos",
-      "UpstreamPathTemplate": "/api/todos/{everything}",
-      "UpstreamHttpMethod": ["Get"]
+      "DownstreamPathTemplate": "/api/todos",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/todos",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    },
+    {
+      "ServiceName": "todos",
+      "DownstreamPathTemplate": "/api/todos{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/todos{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
     }
   ],
   "GlobalConfiguration": {
     "ServiceDiscoveryProvider": {
-      "Host": "consul",
+      "Host": "localhost",
       "Port": 8500,
       "Type": "Consul"
     }

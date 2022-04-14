@@ -14,7 +14,6 @@ namespace Infrastructure.ServiceDiscovery
             var serviceConfig = new ServiceConfig
             {
                 ServiceDiscoveryAddress = configuration.GetValue<Uri>("ServiceConfig:ServiceDiscoveryAddress"),
-                ServiceAddress = configuration.GetValue<Uri>("ServiceConfig:ServiceAddress"),
                 ServiceName = configuration.GetValue<string>("ServiceConfig:ServiceName"),
                 ServiceId = configuration.GetValue<string>("ServiceConfig:ServiceId")
             };

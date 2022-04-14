@@ -11,6 +11,4 @@
     <PackageReference Include="Ocelot.Provider.Consul" Version="18.0.0" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties ocelot_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
-
 </Project>

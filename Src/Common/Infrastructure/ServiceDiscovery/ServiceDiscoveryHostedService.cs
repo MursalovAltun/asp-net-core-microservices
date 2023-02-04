@@ -1,6 +1,5 @@
 ﻿using Consul;
 using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.Hosting;
 
 namespace Infrastructure.ServiceDiscovery
@@ -13,8 +12,8 @@ namespace Infrastructure.ServiceDiscovery
         private readonly IServer _server;
         private readonly string _registrationId;
 
-        public ServiceDiscoveryHostedService(IConsulClient client, 
-            ServiceConfig config, 
+        public ServiceDiscoveryHostedService(IConsulClient client,
+            ServiceConfig config,
             IServer server,
             IHostApplicationLifetime lifetime)
         {
@@ -29,16 +28,12 @@ namespace Infrastructure.ServiceDiscovery
         {
             _lifetime.ApplicationStarted.Register(async () =>
             {
-                var serverAddressFeatures = _server.Features.Get<IServerAddressesFeature>();
-                var addressUrl = serverAddressFeatures.Addresses.First();
-                var addressUri = new Uri(addressUrl);
-
                 var registration = new AgentServiceRegistration
                 {
                     ID = _registrationId,
                     Name = _config.ServiceName,
-                    Address = addressUri.Host,
-                    Port = addressUri.Port
+                    Address = _config.ServiceAddress.Host,
+                    Port = _config.ServiceAddress.Port
                 };
 
                 await _client.Agent.ServiceDeregister(registration.ID, cancellationToken);

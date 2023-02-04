@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  todos:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceConfig__ServiceDiscoveryAddress=http://consul:8500
+      - ServiceConfig__ServiceAddress=http://todos:80
+      - ServiceConfig__ServiceName=todos
+      - ServiceConfig__ServiceId=1
+    ports:
+      - "80"
+
+  api.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80:80"
+
+  consul:
+    ports:
+    - "8500:8500"

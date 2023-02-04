@@ -6,7 +6,7 @@
       "DownstreamPathTemplate": "/api/todos",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/api/todos",
-      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamHttpMethod": ["GET"],
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
@@ -16,7 +16,7 @@
       "DownstreamPathTemplate": "/api/todos{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/api/todos{everything}",
-      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamHttpMethod": ["GET"],
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
@@ -24,7 +24,7 @@
   ],
   "GlobalConfiguration": {
     "ServiceDiscoveryProvider": {
-      "Host": "localhost",
+      "Host": "consul",
       "Port": 8500,
       "Type": "Consul"
     }

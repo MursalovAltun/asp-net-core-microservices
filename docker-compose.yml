@@ -3,7 +3,22 @@ version: '3.4'
 services:
   consul:
     image: consul:latest
-    ports:
-      - "8500:8500"
     hostname: consul
     container_name: consul
+    
+  todos:
+    image: todos:latest
+    container_name: todos
+    hostname: todos
+    depends_on:
+      - consul
+    build:
+      context: .
+      dockerfile: Src/Services/TodosService/Dockerfile
+
+  api.gateway:
+    container_name: api.gateway
+    image: apigateway:latest
+    build:
+      context: .
+      dockerfile: Src/Gateways/API.Gateway/Dockerfile
